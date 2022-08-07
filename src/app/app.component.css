@@ -1,0 +1,51 @@
+*{
+    text-align: center;
+}
+
+
+
+ol{
+    display: inline-block;
+    text-align: center;
+    padding: 1rem;
+    border: 2px, solid, black;
+    background-color:aquamarine;
+    margin: 3px;
+    width: 3rem;
+}
+
+h1{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+li{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    list-style:none;
+    padding: 1rem;
+    border: 2px, solid, black;
+    background-color: bisque;
+    margin: 3px;
+    width: 4rem;
+}
+
+td {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    list-style:none;
+    padding: 1rem;
+    border: 2px, solid, black;
+    background-color: bisque;
+    margin: 3px;
+    width: 4rem; 
+}
+
+.activo{
+    background-color: yellow;
+}
+
+.agotada td{
+    background-color: red;
+    color: white;
+}
+

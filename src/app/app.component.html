@@ -1,0 +1,5 @@
+<h1>Motos disponibles</h1>
+<ol *ngFor="let user of users" [ngClass]="{activo:user===usuarioActivo}" (click)="selectUser(user)"><span>{{user}}</span></ol>
+<table *ngFor="let moto of motos" [ngClass]="{agotada:moto.counter<1}">
+<tr><td>{{moto.id}}</td>    <td>{{moto.counter}}</td>
+</tr></table>
