@@ -2,8 +2,6 @@
     text-align: center;
 }
 
-
-
 ol{
     display: inline-block;
     text-align: center;
@@ -46,6 +44,11 @@ td {
 
 .agotada td{
     background-color: red;
+    color: white;
+}
+
+.tomada td{
+    background-color: green;
     color: white;
 }
 

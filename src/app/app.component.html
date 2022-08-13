@@ -1,5 +1,18 @@
-<h1>Motos disponibles</h1>
-<ol *ngFor="let user of users" [ngClass]="{activo:user===usuarioActivo}" (click)="selectUser(user)"><span>{{user}}</span></ol>
-<table *ngFor="let moto of motos" [ngClass]="{agotada:moto.counter<1}">
-<tr><td>{{moto.id}}</td>    <td>{{moto.counter}}</td>
-</tr></table>
+<h1>Usuarios</h1>
+<ol
+    [ngClass]="{activo:usuarioActivo===''}"
+    (click)="selectUser('')">
+    <span>Admin</span>
+</ol>
+<ol
+    *ngFor="let usuario of usuarios"
+    [ngClass]="{activo:usuario.name===usuarioActivo}"
+    (click)="selectUser(usuario.name)">
+    <span>{{usuario.name}}</span>
+</ol>
+<h2>Motos disponibles</h2>
+<table
+    *ngFor="let moto of motos"
+    [ngClass]="estaTomada(moto.hour,moto.counter)">
+    <tr><td>{{moto.hour}}</td>    <td>{{moto.counter}}</td></tr>
+</table>

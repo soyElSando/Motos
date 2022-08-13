@@ -1,4 +1,4 @@
 export interface Moto {
-    id: string;
+    hour: string;
     counter: number;
   }

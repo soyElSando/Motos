@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {MOTOS} from './mockMoto'
+import {HORARIOS, USUARIOS} from './mockMoto'
+import { Moto } from './moto';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,41 @@ import {MOTOS} from './mockMoto'
 })
 export class AppComponent {
   title = 'Motos';
-  motos=MOTOS;
-  users=[1,2,3,4,5,6,7,8,9,10]
-  usuarioActivo:number=0;
+  motosMax=4;
+  motos:Moto[]=[];
+  horarios=HORARIOS;
+  usuarios=USUARIOS;
+  usuarioActivo:string="";
+  recursoTomado:number=0;
+  counter:number=0;
 
-  selectUser (idUser:number){
-    this.usuarioActivo=idUser;
+  constructor(){
+    for (let horario of this.horarios){
+      this.counter=this.motosMax;
+      for (let usuario of this.usuarios){
+        if(usuario[horario.id]){
+          this.counter--;
+        }
+      }
+      this.motos.push({hour:horario.hour, counter:this.counter})
+    }
   }
+
+  estaTomada(horario:string, motoCounter:number){
+    let horarioId= this.horarios.find(boo=>boo.hour===horario)?.id;
+    let activeUser=this.usuarios.find(boo=>boo.name===this.usuarioActivo);
+    let esActivo=false;
+    if(activeUser&&horarioId){
+      esActivo=activeUser[horarioId];
+    }
+    return {tomada: esActivo, agotada:motoCounter<1}
+  }
+
+  
+
+  selectUser (nameUser:string){
+    this.usuarioActivo=nameUser;
+  }
+
 }
+
