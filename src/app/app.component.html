@@ -1,18 +1,30 @@
-<h1>Usuarios</h1>
-<ol
-    [ngClass]="{activo:usuarioActivo===''}"
-    (click)="selectUser('')">
-    <span>Admin</span>
-</ol>
-<ol
-    *ngFor="let usuario of usuarios"
-    [ngClass]="{activo:usuario.name===usuarioActivo}"
-    (click)="selectUser(usuario.name)">
-    <span>{{usuario.name}}</span>
-</ol>
-<h2>Motos disponibles</h2>
-<table
-    *ngFor="let moto of motos"
-    [ngClass]="estaTomada(moto.hour,moto.counter)">
-    <tr><td>{{moto.hour}}</td>    <td>{{moto.counter}}</td></tr>
-</table>
+<div class="container m-auto text-white bg-dark m-0 p-0">
+    <div class="m-auto p-3">
+        <h1 class="text-center">Usuarios</h1>
+        <!-- <button type="button" (click)="guardaUsuarios()">guarda Usuarios</button> -->
+        <div class="d-flex justify-content-center p-3">
+            <ol class="btn btn-secondary text-white p-3 m-1"
+                [ngClass]="{activo:usuarioActivo===''}"
+                (click)="selectUser('')">
+                <span>Admin</span>
+            </ol>
+            <ol class="btn btn-secondary text-white p-3 m-1"
+                *ngFor="let usuario of usuarios"
+                [ngClass]="{activo:usuario.name===usuarioActivo}"
+                (click)="selectUser(usuario.name)">
+                <span>{{usuario.name}}</span>
+            </ol>
+        </div>
+    </div>
+    <div class="cuerpo p-4">
+        <h2 class="text-center mb-4" *ngIf="usuarioActivo===''">Motos disponibles</h2>
+        <h2 class="text-center mb-4"*ngIf="usuarioActivo!==''">Horarios disponibles</h2>
+        <table class="mx-auto"
+            *ngFor="let moto of motos"
+            [ngClass]="estaTomada(moto.hour,moto.counter)">
+            <tr (click)="toggleState(moto.hour)">
+            <td class="btn btn-secondary text-white p-3 m-1">{{moto.hour}}</td>    
+            <td class="btn btn-secondary text-white p-3 m-1"*ngIf="usuarioActivo===''">{{moto.counter}}</td></tr>
+        </table>
+    </div>  
+</div>
